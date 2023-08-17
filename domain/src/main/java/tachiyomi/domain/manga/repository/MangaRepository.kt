@@ -17,6 +17,11 @@ interface MangaRepository {
 
     suspend fun getFavorites(): List<Manga>
 
+    /**
+     * Get manga that are not favorited
+     */
+    suspend fun getNonFavorites(): List<Manga>
+
     suspend fun getLibraryManga(): List<LibraryManga>
 
     fun getLibraryMangaAsFlow(): Flow<List<LibraryManga>>

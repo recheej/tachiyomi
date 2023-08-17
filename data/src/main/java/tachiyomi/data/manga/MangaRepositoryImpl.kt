@@ -35,6 +35,10 @@ class MangaRepositoryImpl(
         return handler.awaitList { mangasQueries.getFavorites(mangaMapper) }
     }
 
+    override suspend fun getNonFavorites(): List<Manga> {
+        return handler.awaitList { mangasQueries.getNonFavorites(mangaMapper) }
+    }
+
     override suspend fun getLibraryManga(): List<LibraryManga> {
         return handler.awaitList { libraryViewQueries.library(libraryManga) }
     }

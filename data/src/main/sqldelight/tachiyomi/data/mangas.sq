@@ -65,6 +65,11 @@ SELECT *
 FROM mangas
 WHERE favorite = 1;
 
+getNonFavorites:
+SELECT *
+FROM mangas
+WHERE favorite = 0;
+
 getAllManga:
 SELECT *
 FROM mangas;
