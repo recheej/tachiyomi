@@ -528,6 +528,8 @@
     <string name="download_cache_invalidated">Downloads index invalidated</string>
     <string name="pref_clear_database">Clear database</string>
     <string name="pref_clear_database_summary">Delete history for entries that are not saved in your library</string>
+    <string name="pref_clear_non_library_chapters">Delete all non-library chapters</string>
+    <string name="pref_clear_non_library_chapters_summary">Delete all chapters from manga that are not in your library.</string>
     <string name="clear_database_source_item_count">%1$d non-library entries in database</string>
     <string name="clear_database_confirmation">Are you sure? Read chapters and progress of non-library entries will be lost</string>
     <string name="clear_database_completed">Entries deleted</string>

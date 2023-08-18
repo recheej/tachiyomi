@@ -231,6 +231,11 @@ object SettingsAdvancedScreen : SearchableSettings {
                     subtitle = stringResource(R.string.pref_clear_database_summary),
                     onClick = { navigator.push(ClearDatabaseScreen()) },
                 ),
+                Preference.PreferenceItem.TextPreference(
+                    title = stringResource(R.string.pref_clear_non_library_chapters),
+                    subtitle = stringResource(R.string.pref_clear_non_library_chapters_summary),
+                    onClick = { navigator.push(ClearDatabaseScreen()) },
+                ),
             ),
         )
     }
