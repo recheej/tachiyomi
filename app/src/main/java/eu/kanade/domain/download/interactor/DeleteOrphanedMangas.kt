@@ -3,7 +3,6 @@ package eu.kanade.domain.download.interactor
 import eu.kanade.tachiyomi.data.download.DownloadProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import tachiyomi.core.util.lang.deleteRecursively
 import tachiyomi.domain.manga.repository.MangaRepository
 import tachiyomi.domain.source.service.SourceManager
 
@@ -21,7 +20,7 @@ class DeleteOrphanedMangas(
                     ?: error("could not get source for manga name: ${manga.title}")
 
                 val mangaDir = downloadProvider.findMangaDir(manga.title, source)
-                mangaDir?.deleteRecursively()
+                mangaDir?.delete()
             }
         }
     }
