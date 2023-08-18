@@ -20,6 +20,7 @@ class UniFileExtensionsTest {
         val directoryOne = uniFile.createDirectory("directoryOne")
         val testFile = directoryOne.createFile("testFile")
         val directoryTwo = directoryOne.createDirectory("directory two")
+
         uniFile.deleteRecursively()
 
         assert(!uniFile.exists())
