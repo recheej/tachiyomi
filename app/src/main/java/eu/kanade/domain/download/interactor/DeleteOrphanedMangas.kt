@@ -1,25 +1,27 @@
 package eu.kanade.domain.download.interactor
 
+import eu.kanade.tachiyomi.data.download.DownloadProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import eu.kanade.domain.download.model.DeleteOrphanedMangasFailure
-import eu.kanade.domain.download.model.DeleteOrphanedMangasResult
-import tachiyomi.domain.manga.model.Manga
+import tachiyomi.core.util.lang.deleteRecursively
 import tachiyomi.domain.manga.repository.MangaRepository
+import tachiyomi.domain.source.service.SourceManager
 
 class DeleteOrphanedMangas(
     private val mangaRepository: MangaRepository,
-    private val downloadProvid
+    private val downloadProvider: DownloadProvider,
+    private val sourceManager: SourceManager,
 ) {
-    suspend fun run(): DeleteOrphanedMangasResult {
+    suspend fun run() {
         val nonFavoriteMangas = mangaRepository.getNonFavorites()
 
         return withContext(Dispatchers.IO) {
-            val successMangas = mutableListOf<Manga>()
-            val deletionFailures = mutableListOf<DeleteOrphanedMangasFailure>()
+            for (manga in nonFavoriteMangas) {
+                val source = sourceManager.get(manga)
+                    ?: error("could not get source for manga name: ${manga.title}")
 
-            for(manga in nonFavoriteMangas) {
-
+                val mangaDir = downloadProvider.findMangaDir(manga.title, source)
+                mangaDir?.deleteRecursively()
             }
         }
     }

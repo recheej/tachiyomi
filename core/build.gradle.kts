@@ -14,6 +14,10 @@ android {
             "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
         )
     }
+
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
 }
 
 dependencies {
@@ -45,4 +49,6 @@ dependencies {
 
     // JavaScript engine
     implementation(libs.bundles.js.engine)
+
+    testImplementation(libs.bundles.test)
 }
